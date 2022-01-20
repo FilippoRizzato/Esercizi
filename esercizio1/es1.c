@@ -14,11 +14,11 @@ int main()
  
         if(num2 < num1)
         {
-            risultato = num2/num1;
+            risultato = (double)num2/(double)num1;
  
         }
         else{
-            risultato = num1/num2;
+            risultato = (double)num1/(double)num2;
         }
         printf("\n\t risulta %f\n\n", risultato)
  
