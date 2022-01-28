@@ -3,7 +3,7 @@
 int main(int argc, char*argv[]){
     int num1,num2;
     int prodotto;
-    int risultato finale;
+    int risultato finale = 0;
     do{
         printf("inserisci il primo numero");
         printf("inserisci il secondo numero");
@@ -12,11 +12,11 @@ int main(int argc, char*argv[]){
 
     
         prodotto = num1 * num2;
-        prinf("ris%f",risultato);
-        risultato finale =
+        prinf("il prodotto è %d\n\n", prodotto);
+        risultato finale = risultato finale + prodotto;
 
 
 
     }while(num1 != 0||num2 != 0);
-
+printf("la somma è %d\n\n", risultato finale);
 }
