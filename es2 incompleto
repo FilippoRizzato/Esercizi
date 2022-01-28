@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main(int argc, char*argv[]){
+    int num1,num2;
+    int prodotto;
+    int risultato finale;
+    do{
+        printf("inserisci il primo numero");
+        printf("inserisci il secondo numero");
+        scanf("%d", &num1);
+        scanf("%d", &num2);
+
+    
+        prodotto = num1 * num2;
+        prinf("ris%f",risultato);
+        risultato finale =
+
+
+
+    }while(num1 != 0||num2 != 0);
+
+}
