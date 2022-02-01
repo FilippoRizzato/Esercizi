@@ -23,7 +23,7 @@ int main()
             risultato = (double)num1/(double)num2;
         }
         if(risultato > 0){
-            risultato = sqrt(r);
+            risultato = sqrt(risultato);
             printf("la radice sarà %f\n\n", risultato);
 
         }
