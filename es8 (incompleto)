@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+int num1, num2;
+double somma = 0;
+
+printf("Inserisci il 1° numero \n");
+printf("Inserisci il 2° numero \n");
+scanf("%d", &num1);
+scanf("%d", &num2);
+do{
+
+    if (num1 > 0 && num2 > 0)
+    {
+        num1 = sqrt(num1);
+        num2 = sqrt(num2);
+
+         printf("Le radici sono: %f\n\n", num1, num2);
+         somma = (double)num1 + (double)num2;
+          printf("La somma di radici è:%f\n\n", somma);
+
+    }
+
+
+}while(num1 > 0 && num2 > 0);
+printf("I numei selezionati sono < di 0, quindi non ne è possibile fare la radice:(\n\n");
+
+
+return 0;
+}
