@@ -4,7 +4,7 @@
 int main(){
 
     int num1, num2, num3;
-    int min = 0;
+    int min = INT_MAX;
     int max = 0;
 
     do{
@@ -17,9 +17,9 @@ int main(){
 
         if(num2 < num3 && num1 <num2)
         {
-            if(num1 < num2)
+            if(num1 < min)
             min = num1;
-            if(num3 > num2)
+            if(num3 > max)
             max = num3;
 
         }
