@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int
+main ()
+{
+  int n = 4;
+  int i;
+  int array[n];
+
+  for (i = 0; i < n; i++)
+    {
+
+      printf ("Inserisci i valori\n");
+      scanf ("%d", &array[i]);
+
+
+
+    }
+    for(i=4- 1; i >= 0; i--){
+        printf("Il valorein posto %d è:%d\n",i , array[i]);
+    }
+ 
+
+  return 0;
+}
