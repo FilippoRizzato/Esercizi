@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <limits.h>
+#include <string.h>
+
+int main(int argc, char*argv[]){
+int scelta;
+char numeri[] = new char[SHRT_MAX];
+do{
+
+  printf("Inserisci un opzione\n");
+  scanf("%d", &scelta);
+  printf("Inserisci i nummeri nell'array\n");
+  scanf("%d", numeri);
+for(int i = 0; i < strlen(char numeri[]); i++)
+}while(numeri[i] != -1);
+
+
+
+
+}
+void menù(int scelta){
+
+switch (scelta)
+	{
+		case 0:
+        Printf("Termina\n");
+        break;
+		case 1: 
+		printf("Mostra contenuto\n");
+		break;
+		case 2: 
+		printf("Inserire elemento\n");
+		break;
+		case 3: 
+		printf("Modifica elemento\n");
+		break;
+		case 4: 
+		printf("Elimina elemento\n");
+        eliminaelemento(numeri[]);
+		break;
+		case 5: 
+		printf("Ricerca elemento\n");
+		break;
+        case 6:
+        printf("Inserisci in una certa posizione\n")
+        break;
+	}
+	system("PAUSE");
+
+
+}
+void eliminaelemento(char numeri[SHRT_MAX]){
+
+int i;
+int valore;
+
+printf("Inserisci il valore da eliminare\n");
+scanf("%d", &valore);
+for(i = valore; i < strlen(numeri[SHRT_MAX]); i++){
+
+    numeri[i] = numeri[i + 1];
+
+    
+}
+return 0;
+}
+
+void mostracontenuto(){
+
+}
