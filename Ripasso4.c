@@ -1,56 +1,58 @@
-/*Scrivere un programma in C che dopo aver letto un file di testo contenente N stringhe, determini:
-1) la stringa più lunga e la scriva in un secondo file denominato a piacere;
-2) la stringa più corta e la scriva in un terzo file denominato a piacere;
-*/
-
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-#define MAX_STRING_LENGTH 1000 // Lunghezza massima di una stringa
+#define MAX_LENGHT_STRINGA 1000
+
+void trovaLunghezze(const char *nomeFileInput, const char *nomeFilePiùLungo, const char *nomeFilePiùCorto) {
+    FILE *fileInput = fopen(nomeFileInput, "r");
+    if (!fileInput) {
+        perror("Errore nell'apertura del file di input.");
+        return;
+    }
+
+    FILE *filePiùLungo = fopen(nomeFilePiùLungo, "w");
+    if (!filePiùLungo) {
+        perror("Errore nell'apertura del file 'piùlungo.txt'.");
+        fclose(fileInput);
+        return;
+    }
+
+    FILE *filePiùCorto = fopen(nomeFilePiùCorto, "w");
+    if (!filePiùCorto) {
+        perror("Errore nell'apertura del file 'piùcorto.txt'.");
+        fclose(fileInput);
+        fclose(filePiùLungo);
+        return;
+    }
+
+    char stringaCorrente[MAX_LENGHT_STRINGA];
+    char stringaPiùLunga[MAX_LENGHT_STRINGA] = "";
+    char stringaPiùCorta[MAX_LENGHT_STRINGA] = "";
+
+    while (fgets(stringaCorrente, sizeof(stringaCorrente), fileInput)) {
+        stringaCorrente[strcspn(stringaCorrente, "\n")] = '\0';
+
+        if (strlen(stringaCorrente) > strlen(stringaPiùLunga)) {
+            strcpy(stringaPiùLunga, stringaCorrente);
+        }
+
+        if (strlen(stringaCorrente) < strlen(stringaPiùCorta) || !strlen(stringaPiùCorta)) {
+            strcpy(stringaPiùCorta, stringaCorrente);
+        }
+    }
+
+    fprintf(filePiùLungo, "%s\n", stringaPiùLunga);
+    fprintf(filePiùCorto, "%s\n", stringaPiùCorta);
+
+    fclose(fileInput);
+    fclose(filePiùLungo);
+    fclose(filePiùCorto);
+
+    printf("Stringa più lunga: %s\n", stringaPiùLunga);
+    printf("Stringa più corta: %s\n", stringaPiùCorta);
+}
 
 int main() {
-    char inputFileName[] = "input.txt";
-    char longestFileName[] = "lunga.txt";
-    char shortestFileName[] = "corta.txt";
-    
-    FILE *inputFile = fopen(inputFileName, "r");
-    FILE *longestFile = fopen(longestFileName, "w");
-    FILE *shortestFile = fopen(shortestFileName, "w");
-    
-    if (inputFile == NULL || longestFile == NULL || shortestFile == NULL) {
-        perror("Errore nell'apertura dei file.");
-        return 1;
-    }
-    
-    char currentString[MAX_STRING_LENGTH];
-    char longestString[MAX_STRING_LENGTH] = "";
-    char shortestString[MAX_STRING_LENGTH] = "";
-    
-    while (fgets(currentString, sizeof(currentString), inputFile) != NULL) {
-        // Rimuovi il carattere newline dalla fine della stringa
-        currentString[strcspn(currentString, "\n")] = '\0';
-        
-        if (strlen(currentString) > strlen(longestString)) {
-            strcpy(longestString, currentString);
-        }
-        
-        if (strlen(currentString) < strlen(shortestString) || strlen(shortestString) == 0) {
-            strcpy(shortestString, currentString);
-        }
-    }
-    
-    // Scrivi le stringhe nei file appropriati
-    fprintf(longestFile, "%s\n", longestString);
-    fprintf(shortestFile, "%s\n", shortestString);
-    
-    // Chiudi i file
-    fclose(inputFile);
-    fclose(longestFile);
-    fclose(shortestFile);
-    
-    printf("Stringa più lunga: %s\n", longestString);
-    printf("Stringa più corta: %s\n", shortestString);
-    
+    trovaLunghezze("input.txt", "piùlungo.txt", "piùcorto.txt");
     return 0;
 }
